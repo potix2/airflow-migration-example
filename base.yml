@@ -1,0 +1,11 @@
+version: '3'
+services:
+  base:
+    build: .
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__FERNET_KEY=${FERNET_KEY}
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql://airflow:airflow@db:5432/airflow
+      - AIRFLOW_CONN_CATFACT=https://catfact.ninja/
+    volumes:
+      - ./dags:/opt/airflow/dags

@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+  init:
+    extends:
+      file: base.yml
+      service: base
+    command: db init
+    depends_on:
+      - db
+  webserver:
+    extends:
+      file: base.yml
+      service: base
+    restart: always
+    command: webserver
+    depends_on:
+      - db
+      - init
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /opt/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+  sched:
+    extends:
+      file: base.yml
+      service: base
+    restart: always
+    command: scheduler
+    depends_on:
+      - db
+      - init
+      - webserver
