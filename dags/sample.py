@@ -1,7 +1,7 @@
 import airflow
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.http_operator import SimpleHttpOperator
+from airflow.providers.http.operators.http import SimpleHttpOperator
 from airflow.utils.dates import days_ago
 
 
@@ -18,7 +18,6 @@ with DAG(
         endpoint="fact",
         method="GET",
         headers={"Content-Type": "application/json"},
-        xcom_push=True,
     )
     end = DummyOperator(task_id="end")
 
