@@ -1,7 +1,7 @@
 ## What is this repository?
 
-This repository is an example to explain about how to migrate to Airflow2.0.
-It  https://finatext.connpass.com/event/214704/
+This repository is an example to explain about how to migrate to Airflow 2.0.
+It was demonstrated in [this seminar](https://finatext.connpass.com/event/214704/). That material is [here](https://www.slideshare.net/potix2_jp/airflow-20-migration) (Japanese Only).
 
 
 ## Setup
