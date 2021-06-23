@@ -1,18 +1,22 @@
 ## What is this repository?
 
+This repository is an example to explain about how to migrate to Airflow2.0.
+It  https://finatext.connpass.com/event/214704/
+
+
 ## Setup
 
-Before executing the following command
+Execute the following script to generate .env file.
 
 ```shell script
-pip install apache-airflow==1.10.15
 ./make_env.sh
 ```
+
+After that you just run the following command to launch Airflow 1.10.5 with docker compose.
 
 ```shell script
 docker compose up
 ```
-
 
 Open `http://localhost:8080` with your browser.
 
